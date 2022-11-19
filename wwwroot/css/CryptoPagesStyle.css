@@ -1,0 +1,19 @@
+﻿.resultLB{
+    font-weight: bold;
+}
+
+#keyTB {
+    width: 80px;
+    align-self: center;
+}
+
+#inputTB {
+    width: 70%;
+}
+
+#submitBTN{
+    width: 150px;
+    height: 50px;
+    font-size: 1.25rem;
+}
+

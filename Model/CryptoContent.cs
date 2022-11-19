@@ -1,6 +1,6 @@
 ﻿namespace CaesarCipher_Vimr.Model
 {
-    public class PageContent
+    public class CryptoContent
     {
         public int Key { get; set; }
         public string DecryptedText { get; set; }

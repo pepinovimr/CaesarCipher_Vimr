@@ -2,31 +2,39 @@
 @model CaesarCipher_Vimr.Pages.CryptoPages.DecryptModel
 @{
     ViewData["Title"] = "Dešifrovat";
+    string result = string.Empty;
+    int keyVal = 3;
+    @if (Model.cryptoContent != null)
+    {
+        result = Model.cryptoContent.DecryptedText;
+        keyVal = Model.cryptoContent.Key;
+    }
 }
+<link rel="stylesheet" href="~/css/CryptoPagesStyle.css" />
 
 <div class="text-center">
-    <h1 class="display-3">Dešifrovat</h1>
+    <h1 class="display-3">@ViewData["Title"]</h1>
 </div>
+<br />
 
 <form method="post" enctype="multipart/form-data">
-
-    <div class="form-group">
-        <label>Text na zašifrování</label>
-        <input asp-for="@Model.pageContent.EncryptedText" class="form-control" />
-    </div>
-    <div class="form-group">
-        <label>Klíč</label>
-        <input asp-for="@Model.pageContent.Key" class="form-control" value= "3"/>
+    <div class="form-group text-center">
+        <label class="col-form-label-lg">Text na dešifrování: </label>
+        <input asp-for="@Model.cryptoContent.EncryptedText" class="form-control-lg" id="inputTB"/>
+        <br />
+        <label class="col-form-label-lg">Klíč: </label>
+        <input asp-for="@Model.cryptoContent.Key" type="number" min="1" max="25" id="keyTB" class="form-control-lg" value=@keyVal />
     </div>
 
-    <button class="btn btn-primary" type="submit">
-        Zašifrovat
-    </button>
-    <br />
-    <label>Zašifrovaný text: </label>
-    @if (Model.pageContent != null)  //Hazelo null reference jinak
-    {
-        <label>@Model.pageContent.DecryptedText</label>
-    }
+    <div class="text-center">
+        <button class="btn btn-dark" id="submitBTN" type="submit">
+            Dešifrovat
+        </button>
+    </div>
 
+    <div class="text-center">
+        <label class="col-form-label-lg">Dešifrovaný text: </label>
+        <br />
+        <label class="col-form-label-lg resultLB">@result</label>
+    </div>
 </form>

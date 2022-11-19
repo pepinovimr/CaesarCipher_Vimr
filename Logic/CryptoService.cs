@@ -4,7 +4,7 @@ namespace CaesarCipher_Vimr.Logic
 {
     public class CryptoService
     {
-        public static PageContent Encrypt(string textToEncrypt, int key)
+        public static CryptoContent Encrypt(string textToEncrypt, int key)
         {
             string output = string.Empty;
 
@@ -21,16 +21,16 @@ namespace CaesarCipher_Vimr.Logic
                 }
             }
 
-            return new PageContent { 
+            return new CryptoContent { 
                 EncryptedText = output, 
                 DecryptedText = textToEncrypt, 
                 Key = key 
             };
         }
 
-        public static PageContent Decrypt(string textToDecrypt, int key)
+        public static CryptoContent Decrypt(string textToDecrypt, int key)
         {
-            return new PageContent
+            return new CryptoContent
             {
                 EncryptedText = textToDecrypt,
                 DecryptedText = Encrypt(textToDecrypt, 26 - key).EncryptedText,

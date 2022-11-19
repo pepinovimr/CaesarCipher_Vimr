@@ -8,13 +8,13 @@ namespace CaesarCipher_Vimr.Pages.CryptoPages
     public class DecryptModel : PageModel
     {
         [BindProperty]
-        public PageContent pageContent { get; set; }
+        public CryptoContent cryptoContent { get; set; }
         public void OnGet()
         {
         }
         public IActionResult OnPost()
         {
-            pageContent = CryptoService.Decrypt(pageContent.EncryptedText, pageContent.Key);
+            cryptoContent = CryptoService.Decrypt(cryptoContent.EncryptedText, cryptoContent.Key);
 
             ModelState.Clear();
 
