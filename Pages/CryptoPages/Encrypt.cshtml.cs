@@ -14,7 +14,7 @@ namespace CaesarCipher_Vimr.Pages.CryptoPages
         }
         public IActionResult OnPost()
         {
-            cryptoContent = CryptoService.Encrypt(cryptoContent.DecryptedText, cryptoContent.Key);
+            cryptoContent = CryptoHelper.Encrypt(cryptoContent.DecryptedText, cryptoContent.Key);
 
             ModelState.Clear();
 

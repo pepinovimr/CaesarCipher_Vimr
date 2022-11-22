@@ -2,7 +2,7 @@
 
 namespace CaesarCipher_Vimr.Logic
 {
-    public class CryptoService
+    public class CryptoHelper
     {
         public static CryptoContent Encrypt(string textToEncrypt, int key)
         {
