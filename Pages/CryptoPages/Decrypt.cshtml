@@ -2,13 +2,13 @@
 @model CaesarCipher_Vimr.Pages.CryptoPages.DecryptModel
 @{
     ViewData["Title"] = "Dešifrovat";
-    string result = string.Empty;
-    int keyVal = 3;
-    @if (Model.cryptoContent != null)
-    {
-        result = Model.cryptoContent.DecryptedText;
-        keyVal = Model.cryptoContent.Key;
-    }
+    //string result = string.Empty;
+    //int keyVal = 3;
+    //@if (Model.cryptoContent != null)
+    //{
+    //    result = Model.cryptoContent.DecryptedText;
+    //    keyVal = Model.cryptoContent.Key;
+    //}
 }
 <link rel="stylesheet" href="~/css/CryptoPagesStyle.css" />
 
@@ -18,12 +18,15 @@
 <br />
 
 <form method="post" enctype="multipart/form-data">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
     <div class="form-group text-center">
         <label class="col-form-label-lg">Text na dešifrování: </label>
         <input asp-for="@Model.cryptoContent.EncryptedText" class="form-control-lg" id="inputTB"/>
         <br />
         <label class="col-form-label-lg">Klíč: </label>
-        <input asp-for="@Model.cryptoContent.Key" type="number" min="1" max="25" id="keyTB" class="form-control-lg" value=@keyVal />
+        <input asp-for="@Model.cryptoContent.Key" id="keyTB" class="form-control-lg" value=@Model.cryptoContent.Key />
+        <br />
+        <span asp-validation-for="cryptoContent.Key" class="text-danger"></span>
     </div>
 
     <div class="text-center">
@@ -35,6 +38,6 @@
     <div class="text-center">
         <label class="col-form-label-lg">Dešifrovaný text: </label>
         <br />
-        <label class="col-form-label-lg resultLB">@result</label>
+        <label class="col-form-label-lg resultLB">@Model.cryptoContent.DecryptedText</label>
     </div>
 </form>

@@ -1,0 +1,35 @@
+﻿@page
+@model CaesarCipher_Vimr.Pages.CryptoPages.HistoryModel
+@{
+	ViewData["Title"] = "Historie";
+}
+<link rel="stylesheet" href="~/css/CryptoPagesStyle.css" />
+
+<div class="text-center">
+    <h1 class="display-3">@ViewData["Title"]</h1>
+</div>
+<br />
+
+<table class="border-1">
+    <thead>
+        <tr class="border-bottom border-dark">
+            <th class="m-2 p-2">Dešifrovaný text</th>
+            <th class="m-2 p-2">Zašifrovaný text</th>
+            <th class="m-2 p-2">Klíč</th>
+            <th class="m-2 p-2">Vytvořeno</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.ListContent)
+        {
+            <tr class="border-bottom">
+                <td class="m-2 p-2">@item.DecryptedText </td>
+                <td class="m-2 p-2">@item.EncryptedText</td>
+                <td class="m-2 p-2">@item.Key</td>
+                <td class="m-2 p-2">@item.Created</td>
+            </tr>
+        }
+
+    </tbody>
+
+</table>
